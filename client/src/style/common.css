@@ -1,0 +1,81 @@
+/**
+    Global
+*/
+:root {
+    /* color list */
+    --color-primary: rgb(220, 220, 220);
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray: #f7f7f7;
+    --color-bg: #f0ece1;
+    --color-name: #333333;
+    --color-pink: #fecad6;
+    --color-green: #21a664;
+    --color-blue: #2c5dab;
+    --color-red: #f15b41;
+    --color-yellow: #f6e163;
+}
+
+/**
+    Commons
+*/
+* {
+    box-sizing: border-box;
+    font-family: "Open Sans";
+}
+
+.header,
+.footer,
+.content,
+body,
+div,
+nav,
+ul,
+li,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.header,
+.footer,
+.content {
+    margin: auto;
+}
+
+/***********************************************
+            Product Features style
+***********************************************/
+.product_feature-container {
+    margin: auto;
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: 20px 0;
+}
+
+.product_feature-container h2 {
+    border: 1px solid red;
+    font-weight: 800;
+    font-size: 50px;
+    padding: 8px;
+    text-align: center;
+}
+
+.product_feature_list {
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3개씩 한 줄 */
+    gap: 16px; /* 이미지 간격 */
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.product_feature_list img {
+    border: 1px solid red;
+    width: 100%; /* 부모 요소 크기에 맞춤 */
+    height: auto; /* 비율 유지 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
