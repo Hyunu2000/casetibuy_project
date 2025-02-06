@@ -49,15 +49,14 @@ p {
 .product_feature-container {
     margin: auto;
     width: 100%;
-    background-color: var(--color-primary);
-    padding: 20px 0;
+    background-color: var(--color-gray);
 }
 
 .product_feature-container h2 {
-    border: 1px solid red;
-    font-weight: 800;
+    font-weight: bold;
     font-size: 50px;
-    padding: 8px;
+    margin: 0;
+    padding: 25px 0;
     text-align: center;
 }
 
@@ -65,17 +64,27 @@ p {
     border: 1px solid red;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3개씩 한 줄 */
-    gap: 16px; /* 이미지 간격 */
-    justify-content: center;
-    align-items: center;
+    gap: 30px; /* 이미지 간격 조정 */
+    justify-items: center; /* 모든 아이템을 가운데 정렬 */
     max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
-.product_feature_list img {
-    border: 1px solid red;
-    width: 100%; /* 부모 요소 크기에 맞춤 */
-    height: auto; /* 비율 유지 */
-    border-radius: 8px; /* 모서리 둥글게 */
+.product_feature_list div {
+    text-align: center; /* 텍스트 중앙 정렬 */
 }
+
+.product_feature_list img {
+    width: 200px; /* 이미지 크기 줄이기 */
+    height: auto; /* 비율 유지 */
+    background-color: white;
+    border-radius: 25px; /* 모서리 둥글게 */
+    object-fit: contain; /* 이미지가 왜곡되지 않도록 */
+}
+
+.product_feature_list p {
+    font-size: 30px; /* 폰트 크기 키우기 */
+    margin-top: 10px; /* 이미지와 텍스트 간격 */
+}
+
