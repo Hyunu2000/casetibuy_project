@@ -88,3 +88,74 @@ p {
     margin-top: 10px; /* 이미지와 텍스트 간격 */
 }
 
+/**********************
+**********************/
+/* 전체 컨테이너 */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 배경 영상 */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* 로그인 폼 */
+.login-form {
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    /* 투명한 흰색 */
+    padding: 40px;
+    /* 폼 크기 확대 */
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    /* 배경 흐리게 */
+    text-align: center;
+    color: white;
+    width: 400px;
+    /* 가로 크기 확장 */
+}
+
+/* 입력 필드 */
+.login-form input {
+    display: block;
+    width: 100%;
+    /* 입력 필드 가로폭 확장 */
+    margin: 15px 0;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    color: black;
+}
+
+/* 버튼 */
+.login-form button {
+    width: 100%;
+    padding: 15px;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-form button:hover {
+    background: #0056b3;
+}
