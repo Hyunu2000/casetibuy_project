@@ -21,8 +21,12 @@ export default function LoginPage() {
             />
 
             {/* 폼을 로그인 폼 또는 회원가입 폼으로 전환 */}
-            <div className="relative bg-white/20 p-10 rounded-lg shadow-2xl backdrop-blur-lg text-white w-96 text-center left-[500px]">
-                <h2 className="text-3xl font-bold mb-4">{isSignUp ? '회원가입' : '로그인'}</h2>
+            <div
+                className={`relative bg-white p-10 rounded-lg shadow-2xl text-black text-center left-[700px] transition-all duration-300 ${
+                    isSignUp ? 'w-[500px]' : 'w-[500px]' 
+                }`}
+            >
+                <h2 className="text-3xl font-bold mb-8">{isSignUp ? '회원가입' : '로그인'}</h2>
 
                 {/* 로그인 폼 */}
                 {!isSignUp ? (
@@ -30,12 +34,12 @@ export default function LoginPage() {
                         <input
                             type="text"
                             placeholder="아이디"
-                            className="block w-full mt-3 p-3 text-lg rounded-md bg-white/40 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="block w-full mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="password"
                             placeholder="비밀번호"
-                            className="block w-full mt-3 p-3 text-lg rounded-md bg-white/40 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="block w-full mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
                         <button className="w-full mt-4 p-3 bg-blue-500 text-white rounded-md text-lg hover:bg-blue-700 transition">
                             로그인
