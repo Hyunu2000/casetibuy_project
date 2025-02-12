@@ -53,23 +53,33 @@ export default function LoginPage() {
 
             {/* 📌 로그인 / 회원가입 폼 (가장 위) */}
             <div
-                className="relative bg-white p-10 rounded-lg shadow-2xl text-black text-center z-10 transition-all duration-300 w-[500px] left-[700px]"
+                className="relative bg-white p-6 rounded-lg shadow-2xl text-black text-center z-10 transition-all duration-300 w-[500px] left-[700px] overflow-hidden"
             >
-                <h2 className="text-3xl font-bold mb-8">{isSignUp ? "회원가입" : "로그인"}</h2>
+                {/* 🏞️ 추가된 이미지 (항상 유지) */}
+                <div className="w-full h-40 overflow-hidden">
+                    <img
+                        src="/images/skater_john.jpg"
+                        alt="Skater"
+                        className="object-cover w-full h-full"
+                    />
+                </div>
+
+                <h2 className="mt-4 mb-6 text-3xl font-bold">{isSignUp ? "회원가입" : "로그인"}</h2>
 
                 {!isSignUp ? (
                     <>
                         <input
                             type="text"
                             placeholder="아이디"
-                            className="block w-full mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="block w-[400px] mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="password"
                             placeholder="비밀번호"
-                            className="block w-full mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="block w-[400px] mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
-                        <button className="w-full mt-4 p-3 bg-blue-500 text-white rounded-md text-lg hover:bg-blue-700 transition">
+
+                        <button className="w-full p-3 mt-4 text-lg text-white transition bg-blue-500 rounded-md hover:bg-blue-700">
                             로그인
                         </button>
                     </>
@@ -84,7 +94,7 @@ export default function LoginPage() {
                     <a
                         href="#"
                         onClick={() => setIsSignUp(!isSignUp)}
-                        className="text-blue-500 underline hover:text-blue-700 cursor-pointer"
+                        className="text-blue-500 underline cursor-pointer hover:text-blue-700"
                     >
                         {isSignUp ? "로그인" : "지금 만드세요."}
                     </a>
