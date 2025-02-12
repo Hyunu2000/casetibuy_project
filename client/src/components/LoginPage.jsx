@@ -1,34 +1,62 @@
-import { useState } from 'react';
-import SignUpPage from './SignUpPage'; // 회원가입 폼 컴포넌트
+import { useState, useEffect, useRef } from "react";
+import SignUpPage from "./SignUpPage";
 
 export default function LoginPage() {
-    const [isSignUp, setIsSignUp] = useState(false); // 로그인/회원가입 상태 관리
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const [fade, setFade] = useState(false);
+    const videoRef = useRef(null);
 
-    const toggleForm = () => {
-        setIsSignUp(!isSignUp); // 상태를 반전시켜 폼을 전환
-    };
+    const videos = [
+        "/images/tom_jerry.mp4",
+        "/images/chiikawa.mp4",
+        "/images/kuromi.mp4"
+    ];
+
+    useEffect(() => {
+        const handleTransition = () => {
+            setFade(true); // 페이드아웃 시작
+            setTimeout(() => {
+                setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+                setFade(false); // 페이드인 시작
+            }, 500); // 0.5초 후 영상 변경
+        };
+
+        const videoElement = videoRef.current;
+        if (videoElement) {
+            videoElement.addEventListener("ended", handleTransition);
+        }
+
+        return () => {
+            if (videoElement) {
+                videoElement.removeEventListener("ended", handleTransition);
+            }
+        };
+    }, [currentVideoIndex]);
 
     return (
         <div className="relative flex items-center justify-center w-full h-screen overflow-hidden">
-            {/* 배경 영상 */}
+            {/* ✅ 검은 배경 (가장 뒤) */}
+            <div className="absolute top-0 left-0 w-full h-full bg-black -z-20"></div>
+
+            {/* 🎬 배경 영상 (페이드 효과 적용) */}
             <video
-                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-                src="https://cdn-stamplib.casetify.com/cms/video/4ccce0235a9dea5edfe813ba00351524.mp4"
+                ref={videoRef}
+                className={`absolute top-0 left-0 w-full h-full object-cover -z-10 transition-opacity duration-500 ${
+                    fade ? "opacity-0" : "opacity-100"
+                }`}
+                src={videos[currentVideoIndex]}
                 autoPlay
-                loop
                 muted
                 playsInline
             />
 
-            {/* 폼을 로그인 폼 또는 회원가입 폼으로 전환 */}
+            {/* 📌 로그인 / 회원가입 폼 (가장 위) */}
             <div
-                className={`relative bg-white p-10 rounded-lg shadow-2xl text-black text-center left-[700px] transition-all duration-300 ${
-                    isSignUp ? 'w-[500px]' : 'w-[500px]' 
-                }`}
+                className="relative bg-white p-10 rounded-lg shadow-2xl text-black text-center z-10 transition-all duration-300 w-[500px] left-[700px]"
             >
-                <h2 className="text-3xl font-bold mb-8">{isSignUp ? '회원가입' : '로그인'}</h2>
+                <h2 className="text-3xl font-bold mb-8">{isSignUp ? "회원가입" : "로그인"}</h2>
 
-                {/* 로그인 폼 */}
                 {!isSignUp ? (
                     <>
                         <input
@@ -46,18 +74,19 @@ export default function LoginPage() {
                         </button>
                     </>
                 ) : (
-                    <SignUpPage /> // 회원가입 폼이 활성화되면 SignUpPage 컴포넌트를 렌더링
+                    <SignUpPage />
                 )}
 
-                {/* 회원가입 링크 */}
                 <div className="flex items-center justify-center gap-1 mt-4 text-sm">
-                    <span className="text-black">{isSignUp ? '이미 계정이 있습니까?' : 'CASETiBUY 계정이 없습니까?'}</span>
+                    <span className="text-black">
+                        {isSignUp ? "이미 계정이 있습니까?" : "CASETiBUY 계정이 없습니까?"}
+                    </span>
                     <a
                         href="#"
-                        onClick={toggleForm}
+                        onClick={() => setIsSignUp(!isSignUp)}
                         className="text-blue-500 underline hover:text-blue-700 cursor-pointer"
                     >
-                        {isSignUp ? '로그인' : '지금 만드세요.'}
+                        {isSignUp ? "로그인" : "지금 만드세요."}
                     </a>
                 </div>
             </div>
