@@ -42,9 +42,8 @@ export default function LoginPage() {
             {/* 🎬 배경 영상 (페이드 효과 적용) */}
             <video
                 ref={videoRef}
-                className={`absolute top-0 left-0 w-full h-full object-cover -z-10 transition-opacity duration-500 ${
-                    fade ? "opacity-0" : "opacity-100"
-                }`}
+                className={`absolute top-0 left-0 w-full h-full object-cover -z-10 transition-opacity duration-500 ${fade ? "opacity-0" : "opacity-100"
+                    }`}
                 src={videos[currentVideoIndex]}
                 autoPlay
                 muted
@@ -68,20 +67,23 @@ export default function LoginPage() {
 
                 {!isSignUp ? (
                     <>
-                        <input
-                            type="text"
-                            placeholder="아이디"
-                            className="block w-[400px] mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
-                        <input
-                            type="password"
-                            placeholder="비밀번호"
-                            className="block w-[400px] mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
+                        {/* ✅ 수정: 가운데 정렬을 위해 flex-col과 items-center 추가 */}
+                        <div className="flex flex-col items-center">
+                            <input
+                                type="text"
+                                placeholder="아이디"
+                                className="w-[400px] mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            />
+                            <input
+                                type="password"
+                                placeholder="비밀번호"
+                                className="w-[400px] mt-3 p-3 text-lg rounded-md bg-white text-black placeholder-gray-600 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            />
 
-                        <button className="w-full p-3 mt-4 text-lg text-white transition bg-blue-500 rounded-md hover:bg-blue-700">
-                            로그인
-                        </button>
+                            <button className="w-[400px] p-3 mt-4 text-lg text-white transition bg-blue-500 rounded-md hover:bg-blue-700">
+                                로그인
+                            </button>
+                        </div>
                     </>
                 ) : (
                     <SignUpPage />
@@ -100,6 +102,7 @@ export default function LoginPage() {
                     </a>
                 </div>
             </div>
+
         </div>
     );
 }
